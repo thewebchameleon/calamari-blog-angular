@@ -1,0 +1,11 @@
+<div class="blog-categories">
+        <p>Categories:</p>
+    <!--"-->
+        <div class="blog-categories-container">
+            <a *ngFor="let category of _categories" [routerLinkActive]="['active']" [routerLink]="['/blog/category', category.Id ]" >
+                <img class="category-icon" src="{{category.Icon}}" alt="{{category.Name}} icon">
+                {{category.Name}}
+            </a>
+        </div>
+</div>
+<router-outlet></router-outlet>

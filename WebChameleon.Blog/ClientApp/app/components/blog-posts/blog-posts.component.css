@@ -1,0 +1,76 @@
+.posts {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post-card:nth-child(1n) {
+    border-right: 0;
+}
+
+@media screen and (max-width: 1100px) {
+    .post-card {
+        flex: 1 0 50%;
+    }
+}
+
+.post-card {
+    background: #fff;
+    border: 1px solid #d9e1ef;
+    flex: 1 0 33.33%;
+    margin: -1px 0 0;
+    overflow: hidden;
+    position: relative;
+    padding: 35px;
+}
+
+    .post-card a {
+        display: block;
+        color: #545e6f;
+        transition: all .2s ease;
+    }
+
+.post-card__meta {
+    font-size: 14px;
+    height: 32px;
+    color: #8598b9;
+    position: relative;
+    padding: 0 0 0 40px;
+    margin: 5px 20px 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.post-card__title {
+    font-size: 22px;
+    line-height: 28px;
+    margin: 30px 0;
+}
+
+.post-card p {
+    margin: 0;
+}
+
+.pagination {
+    color: #bac1ce;
+    background: #f7f8fb;
+    text-align: center;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+    .pagination ul {
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+    }
+
+#pagination-prev {
+    margin: 0 25px 0 0;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}

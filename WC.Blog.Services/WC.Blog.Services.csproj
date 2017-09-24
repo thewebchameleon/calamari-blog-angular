@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Profile\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WC.Blog.Domain\WC.Blog.Domain.csproj" />
+    <ProjectReference Include="..\WC.Blog.Infrastructure\WC.Blog.Infrastructure.csproj" />
+    <ProjectReference Include="..\WC.CMS.Models\WC.CMS.Models.csproj" />
+    <ProjectReference Include="..\WC.CMS.SquidexClient\WC.CMS.SquidexClient.csproj" />
+  </ItemGroup>
+
+</Project>

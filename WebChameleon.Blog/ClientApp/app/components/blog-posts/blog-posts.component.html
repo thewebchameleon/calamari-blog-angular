@@ -1,0 +1,73 @@
+<div>
+    <div *ngFor="let post of _posts" class="post-card">
+        <a [routerLinkActive]="['active']" [routerLink]="['/blog/post', post.Id ]" class="post-card__content" title="{{ post.Title }}">
+            <div class="post-card__meta">
+                <div class="post-card__tag">
+                    <!--<img src="/img/tags/angular.svg" alt="">-->
+                </div>
+                {{ post.PublishedDate }}
+            </div>
+            <h2 class="post-card__title">
+                {{ post.Title }}
+            </h2>
+            <p>
+                {{ post.Body }}
+            </p>
+        </a>
+    </div>
+</div>
+<div class="pagination">
+    <ul>
+        <li id="pagination-prev">
+            <span>
+                <!--<img src="/img/icons/prev.svg" alt="">-->
+                Prev
+            </span>
+        </li>
+        <li class="pagination-item">
+            <span id="current-page">1</span>
+        </li>
+        <li class="pagination-item">
+            <a href="/page2/">2</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page3/">3</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page4/">4</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page5/">5</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page6/">6</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page7/">7</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page8/">8</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page9/">9</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page10/">10</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page11/">11</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page12/">12</a>
+        </li>
+        <li class="pagination-item">
+            <a href="/page13/">13</a>
+        </li>
+        <li id="pagination-next">
+            <a class="pagination-button" href="/page2/">
+                Next
+                <!--<img src="/img/icons/next.svg" alt="">-->
+            </a>
+        </li>
+    </ul>
+</div>
