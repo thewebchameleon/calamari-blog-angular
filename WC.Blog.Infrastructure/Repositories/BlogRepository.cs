@@ -56,8 +56,17 @@ namespace WC.Blog.Infrastructure.Repositories
 
         #region Private Methods
 
+        /// <summary>
+        /// this will attempt to fetch a content item from the cache otherwise it will fall back to the API
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <typeparam name="TData"></typeparam>
+        /// <param name="id">the string GUID of the content item</param>
+        /// <param name="schemaName">the schema that this content item belongs to</param>
+        /// <returns></returns>
         private async Task<TEntity> GetOrSetItem<TEntity, TData>(string id, string schemaName) where TData : class, new() where TEntity : SquidexEntityBase<TData>, new()
         {
+            //try fetch from schema
             var collection = new List<TEntity>();
             if (_cache.TryGetItem(schemaName, out collection))
             {
@@ -67,21 +76,40 @@ namespace WC.Blog.Infrastructure.Repositories
                 }
                 return collection.First(c => c.Id == id);
             }
+
+            //else try fetch individually cached item
+            var entity = new TEntity();
+            if (_cache.TryGetItem(schemaName, out entity))
+            {
+                return entity;
+            }
+
+            //else make call to API
             var client = _clientFactory.GetClient<TEntity, TData>(schemaName);
             var response = await client.GetAsync(id);
             return _cache.SetItem(id, response);
         }
 
+        /// <summary>
+        /// this will attempt to fetch content items in the specified schema from the cache otherwise it will fall back to the API
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <typeparam name="TData"></typeparam>
+        /// <param name="schemaName">the schema that this content item belongs to</param>
+        /// <returns></returns>
         private async Task<List<TEntity>> GetOrSetItems<TEntity, TData>(string schemaName) where TData : class, new() where TEntity : SquidexEntityBase<TData>, new()
         {
+            //try fetch from cache
             var result = new List<TEntity>();
-            if (!_cache.TryGetItem(schemaName, out result))
+            if (_cache.TryGetItem(schemaName, out result))
             {
-                var client = _clientFactory.GetClient<TEntity, TData>(schemaName);
-                var response = await client.GetAsync();
-                return _cache.SetItem(schemaName, response.Items);
+                return result;
             }
-            return result;
+
+            //else make call to API
+            var client = _clientFactory.GetClient<TEntity, TData>(schemaName);
+            var response = await client.GetAsync();
+            return _cache.SetItem(schemaName, response.Items);
         }
 
         #endregion
