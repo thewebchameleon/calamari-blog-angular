@@ -1,0 +1,35 @@
+<header class="header">
+    <div class="header-profile-pic">
+        <img src="/gfx/adrian.jpg" alt="Adrian Brink">
+        <p>Adrian Brink</p>
+        <span>The Web Chameleon</span>
+    </div>
+    <ul class='nav navbar-nav'>
+        <li class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/blog']">
+            <a>
+                <span class='glyphicon glyphicon-home'></span> Blogs
+            </a>
+        </li>
+        <li class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/about-me']">
+            <a>
+                <span class='glyphicon glyphicon-education'></span> About Me
+            </a>
+        </li>
+        <li class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/contact-me']">
+            <a>
+                <span class='glyphicon glyphicon-th-list'></span> Contact Me
+            </a>
+        </li>
+    </ul>
+    <div class="navbar-links">
+        <a href="https://github.com/aidz92" target="_blank">
+            <img src="/gfx/github.svg" alt="Adrian Brink on GitHub">
+        </a>
+        <a href="https://www.facebook.com/adrian.brink92" target="_blank">
+            <img src="/gfx/fb.svg" alt="Adrian Brink on Facebook">
+        </a>
+        <span>
+            &copy; {{ currentYear }}
+        </span>
+    </div>
+</header>
