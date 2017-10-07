@@ -3,55 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebChameleon.Blog", "WebChameleon.Blog\WebChameleon.Blog.csproj", "{1C7E444F-0C29-4DFC-A7F0-1F7FA3035E89}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WC.CMS.SquidexClient", "WC.CMS.SquidexClient\WC.CMS.SquidexClient.csproj", "{CA4944BB-F9C1-4E32-9355-B7E2D093D457}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WC.Blog.Services", "WC.Blog.Services\WC.Blog.Services.csproj", "{C5948E4B-6F58-4727-A7D6-130193F64928}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WC.Common", "WC.Common\WC.Common.csproj", "{706AE050-A878-4F16-AC5F-1B4A10215845}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WC.CMS.Models", "WC.CMS.Models\WC.CMS.Models.csproj", "{3522437D-00EC-456C-8980-FC231BE796BE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WC.Blog.Infrastructure", "WC.Blog.Infrastructure\WC.Blog.Infrastructure.csproj", "{609B4314-F4A1-46C2-8222-5AF651CBD065}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WC.Blog.Domain", "WC.Blog.Domain\WC.Blog.Domain.csproj", "{B65AA4CF-DCAE-437E-8375-8E48D91B2E1E}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1C7E444F-0C29-4DFC-A7F0-1F7FA3035E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C7E444F-0C29-4DFC-A7F0-1F7FA3035E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C7E444F-0C29-4DFC-A7F0-1F7FA3035E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C7E444F-0C29-4DFC-A7F0-1F7FA3035E89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA4944BB-F9C1-4E32-9355-B7E2D093D457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA4944BB-F9C1-4E32-9355-B7E2D093D457}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA4944BB-F9C1-4E32-9355-B7E2D093D457}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA4944BB-F9C1-4E32-9355-B7E2D093D457}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5948E4B-6F58-4727-A7D6-130193F64928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5948E4B-6F58-4727-A7D6-130193F64928}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5948E4B-6F58-4727-A7D6-130193F64928}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5948E4B-6F58-4727-A7D6-130193F64928}.Release|Any CPU.Build.0 = Release|Any CPU
-		{706AE050-A878-4F16-AC5F-1B4A10215845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{706AE050-A878-4F16-AC5F-1B4A10215845}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{706AE050-A878-4F16-AC5F-1B4A10215845}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{706AE050-A878-4F16-AC5F-1B4A10215845}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3522437D-00EC-456C-8980-FC231BE796BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3522437D-00EC-456C-8980-FC231BE796BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3522437D-00EC-456C-8980-FC231BE796BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3522437D-00EC-456C-8980-FC231BE796BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{609B4314-F4A1-46C2-8222-5AF651CBD065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{609B4314-F4A1-46C2-8222-5AF651CBD065}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{609B4314-F4A1-46C2-8222-5AF651CBD065}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{609B4314-F4A1-46C2-8222-5AF651CBD065}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B65AA4CF-DCAE-437E-8375-8E48D91B2E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B65AA4CF-DCAE-437E-8375-8E48D91B2E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B65AA4CF-DCAE-437E-8375-8E48D91B2E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B65AA4CF-DCAE-437E-8375-8E48D91B2E1E}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
