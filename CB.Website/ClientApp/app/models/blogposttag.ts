@@ -1,5 +1,5 @@
 ﻿export interface BlogPostTag {
-    ID: string,
-    Name: string,
-    Description: string
+    id: string,
+    name: string,
+    description: string
 }

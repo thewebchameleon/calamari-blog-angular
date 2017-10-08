@@ -49,29 +49,30 @@ ul.navbar-nav {
     width: 100%
 }
 
-.nav-link {
+li.nav-link {
     position: relative;
     color: #fff;
     text-decoration: none;
     letter-spacing: .9px;
     display: block;
     font-size: 18px;
+    width: 100%;
+    margin: 0px;
 }
 
-li.nav-link {
-    padding: 0;
-}
-
-.nav-link a {
-    padding: 20px 30px;
+li.nav-link a {
+    padding: 18px 26px;
     color: white;
     font-weight: 500;
+    width: 100%;
+    display: block;
 }
 
-    .nav-link a:hover {
+    li.nav-link a:hover {
         text-decoration: none;
-        background-color: #2a313c;
+        background-color: #4a5669;
         cursor: pointer;
+        transition: all .2s ease;
     }
 
 li.nav-link:focus, li.nav-link.active {

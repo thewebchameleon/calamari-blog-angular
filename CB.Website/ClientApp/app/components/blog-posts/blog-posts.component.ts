@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { DataService } from '../../services/api.service';
+import { Component, Inject } from '@angular/core';
+import { Http } from '@angular/http';
 import { UtilityService } from '../../services/utility.service';
 import { NotificationService } from '../../services/notification.service';
-
-import { BlogPost } from "../../models/blogpost";
 import { ActivatedRoute } from "@angular/router";
+
+import { BlogPost } from '../../models/blogpost';
 
 @Component({
     selector: 'blog-posts',
@@ -12,43 +12,36 @@ import { ActivatedRoute } from "@angular/router";
     styleUrls: ['./blog-posts.component.css']
 })
 export class BlogPostsComponent {
-    private _apiResource_All: string = 'api/blog/GetBlogPosts';
-    private _apiResource_ByTagId: string = 'api/blog/GetBlogPostsByCategoryID';
+    private _utilityService: UtilityService;
+    private _resource: string;
     private _posts: Array<BlogPost>;
-    private _tagId: string;
 
-    constructor(public blogService: DataService,
-        public utilityService: UtilityService,
-        public notificationService: NotificationService,
-        private route: ActivatedRoute
-    ) {
+    constructor(
+        http: Http,
+        @Inject('BASE_URL') baseUrl: string,
+        utilityService: UtilityService,
+        notificationService: NotificationService,
+        route: ActivatedRoute) {
 
-        this.route.params.subscribe(params => this._tagId = params['Id']);
-    }
+        this._utilityService = utilityService;
+        route.params.subscribe(params => {
 
-    ngOnInit() {
-        if (this._tagId == undefined || this._tagId == '') {
-            this.blogService.set(this._apiResource_All);
-        } else {
-            this.blogService.set(this._apiResource_ByTagId + '/' + this._tagId);
-        }
-        this.getBlogPosts();
-    }
+            var id = params['Id'];
+            if (id == undefined) {
+                this._resource = 'api/blog/GetBlogPosts';
+            } else {
+                this._resource = 'api/blog/GetBlogPostsByCategoryID?id=' + id;
+            }
 
-    getBlogPosts(): void {
-        this.blogService.get()
-            .subscribe(res => {
-                var data: any = res.json();
-                this._posts = data.map(function (item: any) {
-                    return new BlogPost(item.id, item.PublishedDate, item.title, item.body, item.category, item.tags);
-                });
+            http.get(baseUrl + this._resource).subscribe(result => {
+                this._posts = result.json() as Array<BlogPost>;
             },
-            error => {
+                error => console.error(error)
+            );
+        });
+    }
 
-                if (error.status == 401 || error.status == 404) {
-                    this.notificationService.printErrorMessage('Authentication required');
-                    this.utilityService.navigateToHome();
-                }
-            });
+    public removeHTMLtags(text: string) {
+        return this._utilityService.removeHTMLtags(text);
     }
 }

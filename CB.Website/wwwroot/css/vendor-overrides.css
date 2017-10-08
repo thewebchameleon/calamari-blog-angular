@@ -1,0 +1,9 @@
+﻿body {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.center {
+    text-align: center;
+    display: block;
+}

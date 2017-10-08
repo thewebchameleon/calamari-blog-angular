@@ -10,16 +10,19 @@ export class UtilityService {
         this._router = router;
     }
 
-    convertDateTime(date: Date) {
-        var _formattedDate = new Date(date.toString());
-        return _formattedDate.toDateString();
-    }
-
     navigate(path: string) {
         this._router.navigate([path]);
     }
 
     navigateToHome() {
         this.navigate('/');
+    }
+
+    navigateToBlog() {
+        this.navigate('/blog');
+    }
+
+    removeHTMLtags(text: string) {
+        return text ? String(text).replace(/<[^>]+>/gm, '').replace(/&nbsp;/gi, '').trim() : '';
     }
 }

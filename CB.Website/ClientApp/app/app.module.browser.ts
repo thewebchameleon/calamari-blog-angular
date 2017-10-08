@@ -19,3 +19,7 @@ export class AppModule {
 export function getBaseUrl() {
     return document.getElementsByTagName('base')[0].href;
 }
+
+export function getAPIUrl() {
+    return document.getElementsByTagName('base')[0].href + '/api/';
+}

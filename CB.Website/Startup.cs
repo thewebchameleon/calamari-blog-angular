@@ -9,6 +9,10 @@ using CB.Infrastructure.Repositories;
 using CB.Services.Blog;
 using CB.Services.Blog.Mappers;
 using CB.CMS.SquidexClient;
+using Microsoft.AspNetCore.ResponseCompression;
+using CB.Domain.Services.Profile.Mappers;
+using CB.Domain.Services.Profile;
+using CB.Repositories.Profile;
 
 namespace CB_Website
 {
@@ -20,12 +24,32 @@ namespace CB_Website
         }
 
         readonly IConfiguration Configuration;
-        
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMemoryCache();
             services.AddMvc();
+
+            //compress static files with gzip
+            services.Configure<GzipCompressionProviderOptions>(options => options.Level = System.IO.Compression.CompressionLevel.Optimal);
+            services.AddResponseCompression(options =>
+            {
+                options.MimeTypes = new[]
+                {
+                    // Default
+                    "text/plain",
+                    "text/css",
+                    "application/javascript",
+                    "text/html",
+                    "application/xml",
+                    "text/xml",
+                    "application/json",
+                    "text/json",
+                    // Custom
+                    "image/svg+xml",
+                };
+            });
 
             services.AddSingleton(Configuration);
 
@@ -39,10 +63,15 @@ namespace CB_Website
 
             //repositories
             services.AddTransient<IBlogRepository, BlogRepository>();
+            services.AddTransient<IProfileRepository, ProfileRepository>();
+
+            //mappers
+            services.AddTransient<IBlogMapper, BlogMapper>();
+            services.AddTransient<IProfileMapper, ProfileMapper>();
 
             //services
-            services.AddTransient<IBlogMapper, BlogMapper>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IProfileService, ProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +90,7 @@ namespace CB_Website
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseResponseCompression();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

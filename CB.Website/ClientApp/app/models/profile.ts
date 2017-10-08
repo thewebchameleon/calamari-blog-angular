@@ -1,6 +1,5 @@
-﻿export interface IBlogPost {
-    Id: string,
-    FirstName: string,
-    LastName: string,
-    Gender: string
+﻿export interface Profile {
+    portrait: string;
+    name: string;
+    body: string;
 }

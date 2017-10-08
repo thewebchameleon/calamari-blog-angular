@@ -1,12 +1,4 @@
-<div class='wrapper'>
-    <h1>About Me</h1>
-
-    <img src="/gfx/adrian.jpg" alt="Adrian" />
-
-    <p>
-        I'm Adrian, a 25 year old web developer living in Cape Town, South Africa with my cat Aria.
-    </p>
-    <p>
-        Having a full-time job leaves me with little time for projects. This is my domain so that when I DO have time, I can waste it here :)
-    </p>
+<div>
+    <img class="profile-pic" src="{{_profile.portrait}}" alt="{{_profile.name}}">
+    <div class='wrapper' innerHTML= {{_profile.body}}></div>
 </div>

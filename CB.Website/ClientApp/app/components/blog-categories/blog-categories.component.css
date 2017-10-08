@@ -1,12 +1,13 @@
 .blog-categories {
     background: #f7f8fb;
     border-bottom: 1px solid #e6e9f3;
-    margin: 70px 0 0 250px;
     overflow: hidden;
     padding: 0 0 0 35px;
 }
 
     .blog-categories p {
+        font-variant: small-caps;
+        font-size: 25px;
         margin: 15px 35px 15px 0;
         float: left;
         font-weight: 600;
@@ -25,12 +26,20 @@
     color: #545e6f;
     font-size: 16px;
     float: left;
-    padding: 15px 0;
+    padding: 15px 30px;
     text-align: center;
-    width: 25%;
     transition: all .2s ease;
+    text-decoration: none;
 }
 
+.blog-categories a span {
+    display: block;
+}
+
+    .blog-categories a:hover {
+        background-color: #fff;
+    }
+
 img.category-icon {
-    width: 25px;
+    width: 36px;
 }

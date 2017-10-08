@@ -7,23 +7,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain", "domain", "{E2644D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cms", "cms", "{4B18C1F9-13DA-447C-AC29-6194EE4D995C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.CMS.Models", "CB.CMS.Models\CB.CMS.Models.csproj", "{C2F49114-B8BF-4925-9674-8830D8E5220F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.CMS.Models", "CB.CMS.Models\CB.CMS.Models.csproj", "{C2F49114-B8BF-4925-9674-8830D8E5220F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Domain.Models", "CB.Domain.Models\CB.Domain.Models.csproj", "{E456449C-6165-4AA1-8C8B-3BF9E48E37A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.Domain.Models", "CB.Domain.Models\CB.Domain.Models.csproj", "{E456449C-6165-4AA1-8C8B-3BF9E48E37A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Domain.Services", "CB.Domain.Services\CB.Domain.Services.csproj", "{29D0EB37-5C46-4D38-B2B9-04BE0A9BDE8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.Domain.Services", "CB.Domain.Services\CB.Domain.Services.csproj", "{29D0EB37-5C46-4D38-B2B9-04BE0A9BDE8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{5A68EDD4-E4F6-4C00-A5A5-CB400F40F8C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Common", "CB.Common\CB.Common.csproj", "{E973FF95-6327-4A6A-97D7-83EF9E601147}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.Common", "CB.Common\CB.Common.csproj", "{E973FF95-6327-4A6A-97D7-83EF9E601147}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Cache", "CB.Cache\CB.Cache.csproj", "{050391DD-6D3D-49C8-A5A0-BCFB8DE9DAC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.Cache", "CB.Cache\CB.Cache.csproj", "{050391DD-6D3D-49C8-A5A0-BCFB8DE9DAC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Repositories", "CB.Repositories\CB.Repositories.csproj", "{F2B11C95-75CF-43B5-BF46-DDDD7E25AB27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.Repositories", "CB.Repositories\CB.Repositories.csproj", "{F2B11C95-75CF-43B5-BF46-DDDD7E25AB27}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.Website", "CB.Website\CB.Website.csproj", "{6DA0B47F-C5F4-4E39-9B48-7017E83263A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.SquidexClient", "CB.SquidexClient\CB.SquidexClient.csproj", "{44FDFFEE-E902-4036-B8A9-148E445B4BFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CB.SquidexClient", "CB.SquidexClient\CB.SquidexClient.csproj", "{44FDFFEE-E902-4036-B8A9-148E445B4BFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Domain.Mappers", "CB.Domain.Mappers\CB.Domain.Mappers.csproj", "{46A8A00E-7F5D-4028-84E1-A287C07C1F57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{44FDFFEE-E902-4036-B8A9-148E445B4BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44FDFFEE-E902-4036-B8A9-148E445B4BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44FDFFEE-E902-4036-B8A9-148E445B4BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A8A00E-7F5D-4028-84E1-A287C07C1F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A8A00E-7F5D-4028-84E1-A287C07C1F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A8A00E-7F5D-4028-84E1-A287C07C1F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A8A00E-7F5D-4028-84E1-A287C07C1F57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{050391DD-6D3D-49C8-A5A0-BCFB8DE9DAC8} = {5A68EDD4-E4F6-4C00-A5A5-CB400F40F8C0}
 		{F2B11C95-75CF-43B5-BF46-DDDD7E25AB27} = {5A68EDD4-E4F6-4C00-A5A5-CB400F40F8C0}
 		{44FDFFEE-E902-4036-B8A9-148E445B4BFC} = {5A68EDD4-E4F6-4C00-A5A5-CB400F40F8C0}
+		{46A8A00E-7F5D-4028-84E1-A287C07C1F57} = {E2644D27-16C4-4EFA-85F2-996375BAA336}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {491BA46D-19AE-4AFF-A1B1-F93ACC791F73}

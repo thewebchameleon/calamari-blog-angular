@@ -6,9 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CB.CMS.Models\CB.CMS.Models.csproj" />
-    <ProjectReference Include="..\CB.Domain.Mappers\CB.Domain.Mappers.csproj" />
     <ProjectReference Include="..\CB.Domain.Models\CB.Domain.Models.csproj" />
-    <ProjectReference Include="..\CB.Repositories\CB.Repositories.csproj" />
+    <ProjectReference Include="..\CB.SquidexClient\CB.SquidexClient.csproj" />
   </ItemGroup>
 
 </Project>

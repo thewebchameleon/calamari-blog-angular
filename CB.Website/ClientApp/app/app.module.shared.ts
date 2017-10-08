@@ -15,7 +15,6 @@ import { BlogCategoriesComponent } from './components//blog-categories/blog-cate
 import { BlogPostComponent } from './components/blog-post/blog-post.component';
 import { BlogPostsComponent } from './components/blog-posts/blog-posts.component';
 
-import { DataService } from './services/api.service';
 import { UtilityService } from './services/utility.service';
 import { NotificationService } from './services/notification.service';
 import { BrowserModule } from "@angular/platform-browser/src/browser";
@@ -34,7 +33,6 @@ import { BrowserModule } from "@angular/platform-browser/src/browser";
         BlogPostComponent
     ],
     imports: [
-        //BrowserModule.withServerTransition({ appId: 'ang4-seo-pre' }),
         CommonModule,
         HttpModule,
         FormsModule,
@@ -62,7 +60,7 @@ import { BrowserModule } from "@angular/platform-browser/src/browser";
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers: [DataService, UtilityService, NotificationService],
+    providers: [UtilityService, NotificationService],
 })
 export class AppModuleShared {
 }

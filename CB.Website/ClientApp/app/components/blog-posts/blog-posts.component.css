@@ -22,25 +22,29 @@
     margin: -1px 0 0;
     overflow: hidden;
     position: relative;
-    padding: 35px;
 }
 
     .post-card a {
         display: block;
         color: #545e6f;
         transition: all .2s ease;
+        padding: 35px;
     }
 
-.post-card__meta {
+.post-card-meta {
     font-size: 14px;
     height: 32px;
     color: #8598b9;
     position: relative;
-    padding: 0 0 0 40px;
     margin: 5px 20px 5px 0;
     display: flex;
     align-items: center;
 }
+
+    .post-card-meta img {
+        width: 25px;
+        margin-right: 10px;
+    }
 
 .post-card__title {
     font-size: 22px;
@@ -58,6 +62,8 @@
     text-align: center;
     margin: 0;
     padding: 40px 20px;
+    width: 100%;
+    font-size: 16px;
 }
 
     .pagination ul {
@@ -74,3 +80,11 @@
     display: inline-block;
     margin: 0 10px 0 0;
 }
+
+.post-card-meta p span {
+    display: block;
+}
+
+    .post-card-meta p span:nth-child(2n) {
+        font-size: 12px;
+    }
