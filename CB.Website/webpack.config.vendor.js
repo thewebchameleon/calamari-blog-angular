@@ -12,7 +12,7 @@ const treeShakableModules = [
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
     '@angular/router',
-    'zone.js',
+    'zone.js'
 ];
 const nonTreeShakableModules = [
     'milligram',
@@ -20,10 +20,7 @@ const nonTreeShakableModules = [
     "../dist/vendor.css",
     'es6-shim',
     'event-source-polyfill',
-    'jquery',
-    "nprogress",
-    "glyphicons",
-    "moment"
+    'zepto'
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 

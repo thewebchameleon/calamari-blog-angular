@@ -1,5 +1,8 @@
 <div class="blog-categories">
     <div class="blog-categories-container">
+        <a [routerLinkActive]="['active']" [routerLink]="['/blog']">
+            <strong>ALL</strong>
+        </a>
         <a *ngFor="let category of _categories" [routerLinkActive]="['active']" [routerLink]="['/blog/category', category.id ]">
             <img class="category-icon" src="{{category.icon}}" alt="{{category.name}} icon">
             <span>{{category.name}}</span>

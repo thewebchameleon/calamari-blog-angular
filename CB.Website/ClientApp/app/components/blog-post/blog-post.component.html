@@ -1,63 +1,15 @@
-<article class="post single">
-    <section class="post__content">
-        <div class="post__detail">
-            <header class="post__header">
-                <h1 class="alpha post__title" itemprop="name headline">
-                    Preloading ngrx/store with Route Guards
-                    <div class="post-card__container">
-                        <div class="post-card__meta">
-                            <div class="post-card__tag">
-                            </div>
-                            Aug 24, 2017
-                        </div>
-                        <div class="post-card__meta">
-                            <div class="post-card__tag">
-                            </div>
-                            4 mins read
-                        </div>
-                        <div class="post-card__meta">
-                            <div class="post-card__tag">
-                            </div>
-                            <a class="post-card-edit" href="//github.com/toddmotto/toddmotto.github.io/blob/master/_posts/2017-08-24-preloading-ngrx-store-route-guards.md">
-                                Edit post
-                            </a>
-                        </div>
+<div class="post">
+    <div class="post-header">
+        <h1>{{ _post.title }}<a [routerLink]="['/blog/' ]">x</a></h1>
 
-                    </div>
-                </h1>
-                <div class="post__meta__divider"></div>
-            </header>
-            <p>Using ngrx/store (and some love for ngrx/effects) is definitely a great step for my productivity when managing state in Angular, and I want to share a small setup that'll allow you to preload data as normal with a Route Guard. The interesting thing is that the route guard will also make an API request if we currently have no data in the Store - and populate the store with the data before we finish transitioning to the route.</p>
-            <p>This is great, because I can hit a particular route, it loads the data and populates my store, at which point I can navigate away from the route and come back. When I come back - as long as I haven't refreshed the app the data will still be in the Store, and skip the API request. This is neat!</p>
-            <div class="toc">
-                <p class="no_toc"><span class="gamma">Table of contents</span></p>
-                <ul id="markdown-toc">
-                    <li><a href="#routes-setup" id="markdown-toc-routes-setup">Routes setup</a></li>
-                    <li><a href="#route-guard" id="markdown-toc-route-guard">Route Guard</a></li>
-                    <li><a href="#actions" id="markdown-toc-actions">Actions</a></li>
-                    <li><a href="#effects" id="markdown-toc-effects">Effects</a></li>
-                </ul>
-            </div>
-            <h3 id="routes-setup">
-                <a href="#routes-setup" class="linkjuice">
-                    <span class="linkjuice-icon">
-                        <i class="linkjuice__icon"></i>
-                    </span>
-                    Routes setup
-                </a>
-            </h3>
-            <p>Let's take a snippet from the code I'm currently working on, where I have a higher level <code class="highlighter-rouge">CourseComponent</code> which embeds a <code class="highlighter-rouge">&lt;router-outlet&gt;</code> for child routes.</p>
-            <p>On the route, I've got a <code class="highlighter-rouge">canActivate</code> property which passes in my <code class="highlighter-rouge">CoursesGuard</code>. The role of this guard is to actually check our Store for data, and dispatch an action to make an API request if there's no data.</p>
-
+        <div class="post-header-detail">
+            <img class="post-header-icon" src="{{ _post.category.icon}}" alt="{{_post.category.name}} icon">
+            {{_post.category.name}}
         </div>
-        <h3 id="route-guard">
-            <a href="#route-guard" class="linkjuice">
-                <span class="linkjuice-icon">
-                    <i class="linkjuice__icon"></i>
-                </span>
-                Route Guard
-            </a>
-        </h3>
-        <p>First, let's assume the basics of a typical Route Guard:</p>
-    </section>
-</article>
+        <div class="post-header-detail">
+            <img class="post-header-icon" src="{{ _post.category.icon}}" alt="date published icon">
+            {{ _post.publishedDate | date: 'EEE, d MMMM yyyy' }}
+        </div>
+    </div>
+    <div class="post-body" innerHTML="{{_post.body}}"></div>
+</div>

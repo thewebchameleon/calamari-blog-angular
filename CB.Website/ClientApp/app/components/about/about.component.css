@@ -1,0 +1,10 @@
+.about-page  {
+    display: block;
+    text-align: center;
+}
+.profile-pic {
+    margin: 0 auto;
+}
+.wrapper {
+    padding: 20px 10%;
+}

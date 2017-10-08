@@ -4,7 +4,7 @@
             <div class="post-card-meta">
                 <img src="{{ post.category.icon }}" alt="{{ post.category.name }}">
                 <p>
-                    <span>{{ post.publishedDate | date: 'medium' }}</span>
+                    <span>{{ post.publishedDate | date: 'EEE, d MMMM yyyy' }}</span>
                     <span *ngIf="post.lastUpdatedDate != undefined && post.lastUpdatedDate != post.publishedDate">Last Updated: {{ post.lastUpdatedDate | date: 'medium' }}</span>
                 </p>
             </div>

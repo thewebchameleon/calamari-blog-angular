@@ -2,16 +2,8 @@
     background: #f7f8fb;
     border-bottom: 1px solid #e6e9f3;
     overflow: hidden;
-    padding: 0 0 0 35px;
+    padding: 0;
 }
-
-    .blog-categories p {
-        font-variant: small-caps;
-        font-size: 25px;
-        margin: 15px 35px 15px 0;
-        float: left;
-        font-weight: 600;
-    }
 
 .blog-categories-container {
     overflow: hidden;
@@ -30,7 +22,12 @@
     text-align: center;
     transition: all .2s ease;
     text-decoration: none;
+    height: 100%;
 }
+
+    .blog-categories a:first-child {
+        padding: 37px 25px;
+    }
 
 .blog-categories a span {
     display: block;
@@ -41,5 +38,5 @@
     }
 
 img.category-icon {
-    width: 36px;
+    width: 37px;
 }

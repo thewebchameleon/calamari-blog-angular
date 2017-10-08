@@ -1,0 +1,22 @@
+.post {
+    padding: 25px;
+}
+
+
+h1 a {
+    float: right;
+}
+
+.post-body {
+
+}
+
+.post-header-detail {
+    display: inline-block;
+    padding: 20px 20px 20px 0;
+}
+
+.post-header-icon {
+    width: 25px;
+    margin-right: 5px;
+}
