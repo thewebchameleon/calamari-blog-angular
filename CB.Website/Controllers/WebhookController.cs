@@ -23,7 +23,6 @@ namespace CB.Website.Controllers
         }
 
         [HttpPost]
-        [Route("FlushCache")]
         public async Task<IActionResult> FlushCache()
         {
             Request.Headers.TryGetValue("X-Signature", out StringValues signature);
@@ -38,11 +37,13 @@ namespace CB.Website.Controllers
                     try
                     {
                         dynamic jObject = JObject.Parse(txt);
-                        var schemaName = (jObject.schemaId as string).Split(',')[1];
-                        var contentID = jObject.contentId;
+                        var payload = jObject.payload;
+
+                        string schemaName = payload.schemaId;
+                        string contentID = payload.contentId;
 
                         //clear from cache
-                        _cacheProvider.Clear(schemaName);
+                        _cacheProvider.Clear(schemaName.Split(',')[1]);
                         _cacheProvider.Clear(contentID);
 
                         return Ok();
