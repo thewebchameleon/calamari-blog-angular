@@ -1,7 +1,10 @@
 ﻿using CB.CMS.SquidexClient;
+using CB.Common.Configuration;
 using CB.Common.Extensions;
 using CB.Infrastructure.Cache;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json.Linq;
 using System;
@@ -15,46 +18,49 @@ namespace CB.Website.Controllers
     {
         private readonly string _secret;
         private readonly ICacheProvider _cacheProvider;
+        private readonly ILogger<WebhookController> _logger;
 
-        public WebhookController(ISquidexConfiguration config, ICacheProvider cacheProvider)
+        public WebhookController(IOptions<SquidexSettings> settings, ICacheProvider cacheProvider, ILoggerFactory logger)
         {
-            _secret = config.WebhookSecret;
+            _secret = settings.Value.WebhookSecret;
             _cacheProvider = cacheProvider;
+            _logger = logger.CreateLogger<WebhookController>();
         }
 
         [HttpPost]
+        [Route("FlushCache")]
         public async Task<IActionResult> FlushCache()
         {
             Request.Headers.TryGetValue("X-Signature", out StringValues signature);
 
             using (var reader = new StreamReader(Request.Body))
             {
-                var txt = await reader.ReadToEndAsync();
-                var generatedSignature = $"{txt}{_secret}".Sha256Base64();
+                var requestBody = await reader.ReadToEndAsync();
+                var generatedSignature = $"{requestBody}{_secret}".Sha256Base64();
 
                 if (generatedSignature == signature)
                 {
                     try
                     {
-                        dynamic jObject = JObject.Parse(txt);
+                        dynamic jObject = JObject.Parse(requestBody);
                         var payload = jObject.payload;
 
-                        string schemaName = payload.schemaId;
+                        string schemaName = ((string)payload.schemaId).Split(',')[1];
                         string contentID = payload.contentId;
 
                         //clear from cache
-                        _cacheProvider.Clear(schemaName.Split(',')[1]);
+                        _cacheProvider.Clear(schemaName);
                         _cacheProvider.Clear(contentID);
 
                         return Ok();
                     }
                     catch (Exception ex)
                     {
-                        //todo: log
-                        throw new System.Exception("An error occurred");
+                        _logger.LogError(ex, "An error ocurred trying to flush cached items");
                     }
                 }
             }
+            _logger.LogError("Could not authenticate request");
             return Unauthorized();
         }
     }

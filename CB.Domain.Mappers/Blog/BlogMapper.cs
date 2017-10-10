@@ -2,14 +2,15 @@
 using System.Linq;
 using CB.Domain.Models;
 using CB.CMS.Models.Blog;
-using CB.CMS.SquidexClient;
 using CB.Domain.Mappers;
+using CB.Common.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace CB.Services.Blog.Mappers
 {
     public class BlogMapper : BaseMapper, IBlogMapper
     {
-        public BlogMapper(ISquidexConfiguration config) : base(config) { }
+        public BlogMapper(IOptions<SquidexSettings> config) : base(config) { }
 
         public List<BlogCategory> MapToBlogCategories(List<BlogCategoryEntity> model)
         {

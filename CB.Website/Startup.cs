@@ -13,6 +13,13 @@ using Microsoft.AspNetCore.ResponseCompression;
 using CB.Domain.Services.Profile.Mappers;
 using CB.Domain.Services.Profile;
 using CB.Repositories.Profile;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Core;
+using System;
+using Serilog.Events;
+using Microsoft.Extensions.Options;
+using CB.Common.Configuration;
 
 namespace CB_Website
 {
@@ -52,13 +59,14 @@ namespace CB_Website
             });
 
             services.AddSingleton(Configuration);
+            services.Configure<LoggingSettings>(options => Configuration.GetSection("Logging").Bind(options));
 
             //cache
             services.AddSingleton<ICacheConfiguration, CacheConfiguration>();
             services.AddSingleton<ICacheProvider, MemoryCacheProvider>();
 
             //cms client
-            services.AddSingleton<ISquidexConfiguration, SquidexConfiguration>();
+            services.Configure<SquidexSettings>(options => Configuration.GetSection("Squidex").Bind(options));
             services.AddTransient<ISquidexClientFactory, SquidexClientFactory>();
 
             //repositories
@@ -75,19 +83,17 @@ namespace CB_Website
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IOptions<LoggingSettings> loggerConfig)
         {
+            ConfigureLogging(loggerFactory, loggerConfig);
+            ConfigureExeptionHandling(app, env);
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     HotModuleReplacement = true
                 });
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
             }
 
             app.UseResponseCompression();
@@ -103,6 +109,41 @@ namespace CB_Website
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+        }
+
+        public void ConfigureLogging(ILoggerFactory loggerFactory, IOptions<LoggingSettings> settings)
+        {
+            var config = settings.Value;
+
+            var loggingLevel = new LoggingLevelSwitch(Enum.Parse<LogEventLevel>(config.MinimumLogLevel));
+            var logger = new LoggerConfiguration().MinimumLevel.ControlledBy(loggingLevel);
+
+            if (config.Seq.IsEnabled)
+            {
+                logger.WriteTo.Seq(
+                    config.Seq.Endpoint,
+                    apiKey: config.Seq.APIKey,
+                    controlLevelSwitch: loggingLevel
+                );
+            }
+            if (config.RollingFile.IsEnabled)
+            {
+                logger.WriteTo.RollingFile(config.RollingFile.Path);
+            }
+
+            loggerFactory.AddSerilog(logger.CreateLogger());
+        }
+
+        public void ConfigureExeptionHandling(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
         }
     }
 }

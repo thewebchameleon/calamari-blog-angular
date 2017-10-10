@@ -1,13 +1,14 @@
 ﻿using CB.CMS.Models.Profile;
 using CB.Domain.Mappers;
 using System.Linq;
-using CB.CMS.SquidexClient;
+using CB.Common.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace CB.Domain.Services.Profile.Mappers
 {
     public class ProfileMapper : BaseMapper, IProfileMapper
     {
-        public ProfileMapper(ISquidexConfiguration config) : base(config) { }
+        public ProfileMapper(IOptions<SquidexSettings> config) : base(config) { }
 
         public Models.Profile MapToProfile(ProfileEntity model)
         {

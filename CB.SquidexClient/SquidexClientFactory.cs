@@ -1,10 +1,13 @@
-﻿namespace CB.CMS.SquidexClient
+﻿using CB.Common.Configuration;
+using Microsoft.Extensions.Options;
+
+namespace CB.CMS.SquidexClient
 {
     public class SquidexClientFactory : ISquidexClientFactory
     {
-        readonly ISquidexConfiguration _config;
+        readonly IOptions<SquidexSettings> _config;
 
-        public SquidexClientFactory(ISquidexConfiguration config)
+        public SquidexClientFactory(IOptions<SquidexSettings> config)
         {
             _config = config;
         }

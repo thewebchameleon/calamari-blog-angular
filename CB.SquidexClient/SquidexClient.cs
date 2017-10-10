@@ -6,6 +6,8 @@
 //  All rights reserved.
 // ==========================================================================
 
+using CB.Common.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -23,19 +25,15 @@ namespace CB.CMS.SquidexClient
         private readonly string schemaName;
         private readonly IAuthenticator authenticator;
 
-        public SquidexClient(ISquidexConfiguration config, string schemaName)
+        public SquidexClient(IOptions<SquidexSettings> settings, string schemaName)
         {
-            ArgumentGuard.NotNullOrEmpty(config.AuthServiceURL, nameof(config.ServiceURL));
-            ArgumentGuard.NotNullOrEmpty(config.ClientID, nameof(config.ServiceURL));
-            ArgumentGuard.NotNullOrEmpty(config.ClientSecret, nameof(config.ServiceURL));
-            ArgumentGuard.NotNullOrEmpty(config.ServiceURL, nameof(config.AuthServiceURL));
-            ArgumentGuard.NotNullOrEmpty(config.ApplicationName, nameof(config.ApplicationName));
-            ArgumentGuard.NotNullOrEmpty(schemaName, nameof(schemaName));
+            var clientConfig = settings.Value;
+            var authConfig = clientConfig.Authenticator;
 
-            this.serviceUrl = new Uri(config.ServiceURL);
+            this.serviceUrl = new Uri(clientConfig.ServiceURL);
             this.schemaName = schemaName;
-            this.authenticator = new Authenticator(new Uri(config.AuthServiceURL), config.ClientID, config.ClientSecret);
-            this.applicationName = config.ApplicationName;
+            this.authenticator = new Authenticator(new Uri(authConfig.ServiceURL), authConfig.ClientID, authConfig.ClientSecret);
+            this.applicationName = clientConfig.ApplicationName;
         }
 
         public async Task<SquidexEntities<TEntity, TData>> GetAsync(long? skip = null, long? top = null, string filter = null, string orderBy = null, string search = null)

@@ -1,14 +1,15 @@
-﻿using CB.CMS.SquidexClient;
+﻿using CB.Common.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace CB.Domain.Mappers
 {
     public abstract class BaseMapper
     {
-        protected readonly ISquidexConfiguration _config;
+        protected readonly SquidexSettings _config;
 
-        public BaseMapper(ISquidexConfiguration config)
+        public BaseMapper(IOptions<SquidexSettings> settings)
         {
-            _config = config;
+            _config = settings.Value;
         }
 
         public string ResolveAssetURL(string id)
