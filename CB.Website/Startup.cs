@@ -62,7 +62,7 @@ namespace CB_Website
             services.Configure<LoggingSettings>(options => Configuration.GetSection("Logging").Bind(options));
 
             //cache
-            services.AddSingleton<ICacheConfiguration, CacheConfiguration>();
+            services.Configure<CacheSettings>(options => Configuration.GetSection("Cache").Bind(options));
             services.AddSingleton<ICacheProvider, MemoryCacheProvider>();
 
             //cms client

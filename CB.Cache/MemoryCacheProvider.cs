@@ -1,17 +1,19 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using CB.Infrastructure.Cache.Configuration;
+using Microsoft.Extensions.Options;
+using CB.Common.Configuration;
+using System;
 
 namespace CB.Infrastructure.Cache
 {
     public class MemoryCacheProvider : ICacheProvider
     {
         private readonly IMemoryCache _cache;
-        private readonly ICacheConfiguration _config;
+        private readonly CacheSettings _config;
 
-        public MemoryCacheProvider(IMemoryCache memoryCache, ICacheConfiguration config)
+        public MemoryCacheProvider(IMemoryCache memoryCache, IOptions<CacheSettings> settings)
         {
             _cache = memoryCache;
-            _config = config;
+            _config = settings.Value;
         }
         
         public bool TryGetItem<T>(string id, out T value)
@@ -25,7 +27,7 @@ namespace CB.Infrastructure.Cache
 
         public T SetItem<T>(string key, T value)
         {
-            return _cache.Set(key, value, _config.ExpiryTime);
+            return _cache.Set(key, value, TimeSpan.FromMinutes(_config.ExpiryTimeMinutes));
         }
 
         public void Clear(string key)
