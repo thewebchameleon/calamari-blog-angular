@@ -1,5 +1,4 @@
-﻿using CB.Common.Configuration;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 
 namespace CB.CMS.SquidexClient
 {

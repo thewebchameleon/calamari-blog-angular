@@ -1,4 +1,4 @@
-﻿namespace CB.Common.Configuration
+﻿namespace CB.CMS.SquidexClient
 {
     public class AuthenticatorSettings
     {

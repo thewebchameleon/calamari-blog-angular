@@ -1,4 +1,4 @@
-﻿namespace CB.Common.Configuration
+﻿namespace CB.Infrastructure.Cache
 {
     public class CacheSettings
     {

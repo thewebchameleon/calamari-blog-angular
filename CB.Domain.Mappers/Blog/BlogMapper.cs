@@ -3,8 +3,8 @@ using System.Linq;
 using CB.Domain.Models;
 using CB.CMS.Models.Blog;
 using CB.Domain.Mappers;
-using CB.Common.Configuration;
 using Microsoft.Extensions.Options;
+using CB.CMS.SquidexClient;
 
 namespace CB.Services.Blog.Mappers
 {

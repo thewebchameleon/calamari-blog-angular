@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CB.Infrastructure.Cache;
-using CB.Infrastructure.Cache.Configuration;
 using CB.Infrastructure.Repositories;
 using CB.Services.Blog;
 using CB.Services.Blog.Mappers;
@@ -19,7 +18,7 @@ using Serilog.Core;
 using System;
 using Serilog.Events;
 using Microsoft.Extensions.Options;
-using CB.Common.Configuration;
+using CB.Common.Logging;
 
 namespace CB_Website
 {

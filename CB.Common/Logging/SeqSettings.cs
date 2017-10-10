@@ -1,4 +1,4 @@
-﻿namespace CB.Common.Configuration
+﻿namespace CB.Common.Logging
 {
     public class SeqSettings
     {

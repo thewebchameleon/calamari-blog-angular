@@ -1,8 +1,8 @@
 ﻿using CB.CMS.Models.Profile;
 using CB.Domain.Mappers;
 using System.Linq;
-using CB.Common.Configuration;
 using Microsoft.Extensions.Options;
+using CB.CMS.SquidexClient;
 
 namespace CB.Domain.Services.Profile.Mappers
 {

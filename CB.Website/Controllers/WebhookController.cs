@@ -1,5 +1,4 @@
 ﻿using CB.CMS.SquidexClient;
-using CB.Common.Configuration;
 using CB.Common.Extensions;
 using CB.Infrastructure.Cache;
 using Microsoft.AspNetCore.Mvc;

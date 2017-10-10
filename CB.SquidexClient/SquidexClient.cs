@@ -6,7 +6,6 @@
 //  All rights reserved.
 // ==========================================================================
 
-using CB.Common.Configuration;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;

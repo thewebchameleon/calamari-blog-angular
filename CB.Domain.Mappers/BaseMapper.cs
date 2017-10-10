@@ -1,4 +1,4 @@
-﻿using CB.Common.Configuration;
+﻿using CB.CMS.SquidexClient;
 using Microsoft.Extensions.Options;
 
 namespace CB.Domain.Mappers

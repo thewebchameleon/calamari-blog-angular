@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
-using CB.Common.Configuration;
 using System;
 
 namespace CB.Infrastructure.Cache
