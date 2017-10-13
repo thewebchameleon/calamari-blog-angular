@@ -17,7 +17,6 @@ const treeShakableModules = [
 const nonTreeShakableModules = [
     'milligram',
     'es6-promise',
-    "../dist/vendor.css",
     'es6-shim',
     'event-source-polyfill',
     'zepto'

@@ -14,7 +14,6 @@ if (module.hot) {
         modulePromise.then(appModule => appModule.destroy());
     });
 } else {
-    alert('production mode enabled!');
     enableProdMode();
 }
 
