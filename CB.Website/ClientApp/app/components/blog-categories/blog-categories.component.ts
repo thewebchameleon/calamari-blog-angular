@@ -1,7 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Http } from '@angular/http';
-import { UtilityService } from '../../services/utility.service';
-import { NotificationService } from '../../services/notification.service';
+import { DataService } from '../../services/data.service';
 
 import { BlogPostCategory } from '../../models/blogpostcategory';
 
@@ -10,20 +8,21 @@ import { BlogPostCategory } from '../../models/blogpostcategory';
     templateUrl: './blog-categories.component.html',
     styleUrls: ['./blog-categories.component.css']
 })
+
 export class BlogCategoriesComponent {
-    private _resource: string = 'api/blog/GetBlogCategories';
     private _categories: Array<BlogPostCategory>;
 
-    constructor(
-        http: Http,
-        @Inject('BASE_URL') baseUrl: string,
-        utilityService: UtilityService,
-        notificationService: NotificationService) {
+    constructor(public dataService: DataService) { }
 
-        http.get(baseUrl + 'api/blog/GetBlogCategories').subscribe(result => {
-            this._categories = result.json() as Array<BlogPostCategory>;
-        },
-            error => console.error(error)
-        );
+    ngOnInit() {
+        this.getBlogCategories();
+    }
+
+    getBlogCategories() {
+        this.dataService.set('api/blog/get-blog-categories');
+        this.dataService.get().subscribe(res => {
+            var data: Array<BlogPostCategory> = res.json();
+            this._categories = data;
+        });
     }
 }

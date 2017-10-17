@@ -7,4 +7,5 @@ export interface BlogPost {
     title: string;
     category: BlogPostCategory;
     tags: Array<BlogPostTag>;
+    body: string;
 }

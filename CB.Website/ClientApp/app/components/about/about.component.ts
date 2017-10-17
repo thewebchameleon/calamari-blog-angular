@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
-import { UtilityService } from '../../services/utility.service';
-import { NotificationService } from '../../services/notification.service';
+import { DataService } from '../../services/data.service';
 
 import { Profile } from '../../models/profile';
 
@@ -10,21 +9,26 @@ import { Profile } from '../../models/profile';
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.css']
 })
+
 export class AboutComponent {
-    private _profile: Profile;
-    private _resource: string;
+    private name: string;
+    private portrait: string;
+    private body: string;
 
-    constructor(
-        http: Http,
-        @Inject('BASE_URL') baseUrl: string,
-        utilityService: UtilityService,
-        notificationService: NotificationService) {
+    constructor(public dataService: DataService) { }
 
-        http.get(baseUrl + 'api/profile').subscribe(result =>
-        {
-            this._profile = result.json() as Profile;
-        },
-            error => console.error(error)
-        );
+    async ngOnInit() {
+        this.getProfile();
+    }
+
+    getProfile() {
+        this.dataService.set('api/profile');
+        this.dataService.get().subscribe(res => {
+            var data: Profile = res.json();
+
+            this.name = data.name;
+            this.portrait = data.portrait;
+            this.body = data.body;
+        });
     }
 }

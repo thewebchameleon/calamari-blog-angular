@@ -1,8 +1,8 @@
 <header class="header">
     <div class="header-profile-pic">
-        <!--<img src="" alt="Adrian Brink">-->
-        <p>Adrian Brink</p>
-        <span>The Web Chameleon</span>
+        <img src="{{ portrait }}" alt="{{ name }}">
+        <p>{{ name }}</p>
+        <span>{{ title }}</span>
     </div>
     <ul class='navbar-nav'>
         <li class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/blog']">

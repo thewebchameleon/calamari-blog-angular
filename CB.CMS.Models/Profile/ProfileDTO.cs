@@ -13,6 +13,9 @@ namespace CB.CMS.Models.Profile
         public string Name { get; set; }
 
         [JsonConverter(typeof(InvariantConverter))]
+        public string Title { get; set; }
+
+        [JsonConverter(typeof(InvariantConverter))]
         public string Body { get; set; }
     }
 }

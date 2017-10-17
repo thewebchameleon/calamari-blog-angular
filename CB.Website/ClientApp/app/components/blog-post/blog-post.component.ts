@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { Http } from '@angular/http';
 import { UtilityService } from '../../services/utility.service';
-import { NotificationService } from '../../services/notification.service';
 import { ActivatedRoute } from "@angular/router";
+import { DataService } from '../../services/data.service';
 
 import { BlogPost } from '../../models/blogpost';
 
@@ -13,14 +12,17 @@ import { BlogPost } from '../../models/blogpost';
 })
 export class BlogPostComponent {
     private _resource: string;
-    private _post: BlogPost;
+
+    private title: string;
+    private categoryIcon: string;
+    private categoryName: string;
+    private publishedDate: Date;
+    private body: string;
 
     constructor(
-        http: Http,
-        @Inject('BASE_URL') baseUrl: string,
         utilityService: UtilityService,
-        notificationService: NotificationService,
-        route: ActivatedRoute) {
+        route: ActivatedRoute,
+        public dataService: DataService) {
 
         route.params.subscribe(params => {
 
@@ -28,14 +30,25 @@ export class BlogPostComponent {
             if (id == undefined) {
                 utilityService.navigateToBlog();
             } else {
-                this._resource = 'api/blog/GetBlogPost?id=' + id;
+                this._resource = 'api/blog/get-blog-post?id=' + id;
             }
+        });
+    }
 
-            http.get(baseUrl + this._resource).subscribe(result => {
-                this._post = result.json() as BlogPost;
-            },
-                error => console.error(error)
-            );
+    ngOnInit() {
+        this.getBlogPost();
+    }
+
+    getBlogPost() {
+        this.dataService.set(this._resource);
+        this.dataService.get().subscribe(res => {
+            var data: BlogPost = res.json();
+
+            this.body = data.body;
+            this.categoryIcon = data.category.icon;
+            this.categoryName = data.category.name;
+            this.title = data.title;
+            this.publishedDate = data.publishedDate;
         });
     }
 }

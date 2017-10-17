@@ -17,42 +17,34 @@ namespace WebChameleon_Blog.Controllers
         }
 
         [HttpGet]
-        [Route("GetBlogPosts")]
+        [Route("get-blog-posts")]
         public async Task<List<BlogPost>> GetBlogPosts()
         {
-            //log started
             var result = await _blogService.GetBlogPosts();
-            //log completed
             return result;
         }
 
         [HttpGet]
-        [Route("GetBlogPostsByCategoryID")]
+        [Route("get-blog-posts-by-category-id")]
         public async Task<List<BlogPost>> GetBlogPostsByCategoryID(string id)
         {
-            //log started
             var result = await _blogService.GetBlogPostsByCategoryID(id);
-            //log completed
             return result;
         }
 
         [HttpGet]
-        [Route("GetBlogCategories")]
+        [Route("get-blog-categories")]
         public async Task<List<BlogCategory>> GetBlogCategories()
         {
-            //log started
             var result = await _blogService.GetBlogCategories();
-            //log completed
             return result;
         }
 
         [HttpGet]
-        [Route("GetBlogPost")]
+        [Route("get-blog-post")]
         public async Task<BlogPost> GetBlogPost(string id)
         {
-            //log started
             var result = await _blogService.GetBlogPost(id);
-            //log completed
             return result;
         }
     }

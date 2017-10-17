@@ -9,9 +9,7 @@
     overflow: hidden;
 }
 
-.blog-categories a.active {
-    background: #e9ecf4;
-}
+
 
 .blog-categories a {
     display: block;
@@ -29,12 +27,16 @@
         padding: 37px 25px;
     }
 
-.blog-categories a span {
-    display: block;
-}
+    .blog-categories a span {
+        display: block;
+    }
 
     .blog-categories a:hover {
-        background-color: #fff;
+        background-color: #d2d4d8;
+    }
+
+    .blog-categories a.active {
+        background: #e9ecf4;
     }
 
 img.category-icon {

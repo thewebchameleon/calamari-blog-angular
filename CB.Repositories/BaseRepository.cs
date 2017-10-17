@@ -30,7 +30,7 @@ namespace CB.Infrastructure.Repositories
         {
             //try fetch from schema
             var collection = new List<TEntity>();
-            if (_cache.TryGetItem(schemaName, out collection))
+            if (_cache.TryGetItem(schemaName, out collection) && collection.Any())
             {
                 if (!collection.Any(c => c.Id == id))
                 {
@@ -41,7 +41,7 @@ namespace CB.Infrastructure.Repositories
 
             //else try fetch individually cached item
             var entity = new TEntity();
-            if (_cache.TryGetItem(schemaName, out entity))
+            if (_cache.TryGetItem(id, out entity) && entity != null)
             {
                 return entity;
             }
@@ -63,7 +63,7 @@ namespace CB.Infrastructure.Repositories
         {
             //try fetch from cache
             var result = new List<TEntity>();
-            if (_cache.TryGetItem(schemaName, out result))
+            if (_cache.TryGetItem(schemaName, out result) && result.Any())
             {
                 return result;
             }

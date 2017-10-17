@@ -15,6 +15,7 @@ import { BlogCategoriesComponent } from './components//blog-categories/blog-cate
 import { BlogPostComponent } from './components/blog-post/blog-post.component';
 import { BlogPostsComponent } from './components/blog-posts/blog-posts.component';
 
+import { DataService } from './services/data.service';
 import { UtilityService } from './services/utility.service';
 import { NotificationService } from './services/notification.service';
 import { BrowserModule } from "@angular/platform-browser/src/browser";
@@ -60,7 +61,7 @@ import { BrowserModule } from "@angular/platform-browser/src/browser";
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers: [UtilityService, NotificationService],
+    providers: [UtilityService, NotificationService, DataService],
 })
 export class AppModuleShared {
 }

@@ -1,15 +1,15 @@
 <div class="post">
     <div class="post-header">
-        <h1>{{ _post.title }}<a [routerLink]="['/blog/' ]">x</a></h1>
+        <h1>{{title}}<a [routerLink]="['/blog/' ]">x</a></h1>
 
         <div class="post-header-detail">
-            <img class="post-header-icon" src="{{ _post.category.icon}}" alt="{{_post.category.name}} icon">
-            {{_post.category.name}}
+            <img class="post-header-icon" src="{{categoryIcon}}" alt="{{categoryName}} icon">
+            {{categoryName}}
         </div>
         <div class="post-header-detail">
-            <img class="post-header-icon" src="{{ _post.category.icon}}" alt="date published icon">
-            {{ _post.publishedDate | date: 'EEE, d MMMM yyyy' }}
+            <img class="post-header-icon" src="{{categoryIcon}}" alt="date published icon">
+            {{publishedDate | date: 'EEE, d MMMM yyyy'}}
         </div>
     </div>
-    <div class="post-body" innerHTML="{{_post.body}}"></div>
+    <div class="post-body" innerHTML="{{body}}"></div>
 </div>

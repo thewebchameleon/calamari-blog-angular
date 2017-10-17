@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { Http } from '@angular/http';
-import { UtilityService } from '../../services/utility.service';
-import { NotificationService } from '../../services/notification.service';
 import { ActivatedRoute } from "@angular/router";
+import { DataService } from '../../services/data.service';
+import { UtilityService } from '../../services/utility.service';
 
 import { BlogPost } from '../../models/blogpost';
 
@@ -12,36 +11,39 @@ import { BlogPost } from '../../models/blogpost';
     styleUrls: ['./blog-posts.component.css']
 })
 export class BlogPostsComponent {
-    private _utilityService: UtilityService;
     private _resource: string;
     private _posts: Array<BlogPost>;
 
     constructor(
-        http: Http,
-        @Inject('BASE_URL') baseUrl: string,
-        utilityService: UtilityService,
-        notificationService: NotificationService,
+        public utilityService: UtilityService,
+        public dataService: DataService,
         route: ActivatedRoute) {
 
-        this._utilityService = utilityService;
         route.params.subscribe(params => {
 
             var id = params['Id'];
             if (id == undefined) {
-                this._resource = 'api/blog/GetBlogPosts';
+                this._resource = 'api/blog/get-blog-posts';
             } else {
-                this._resource = 'api/blog/GetBlogPostsByCategoryID?id=' + id;
+                this._resource = 'api/blog/get-blog-posts-by-category-id?id=' + id;
             }
+            this.getBlogPosts();
+        });
+    }
 
-            http.get(baseUrl + this._resource).subscribe(result => {
-                this._posts = result.json() as Array<BlogPost>;
-            },
-                error => console.error(error)
-            );
+     ngOnInit() {
+        
+    }
+
+    getBlogPosts() {
+        this.dataService.set(this._resource);
+        this.dataService.get().subscribe(res => {
+            var data: Array<BlogPost> = res.json();
+            this._posts = data;
         });
     }
 
     public removeHTMLtags(text: string) {
-        return this._utilityService.removeHTMLtags(text);
+        return this.utilityService.removeHTMLtags(text);
     }
 }
