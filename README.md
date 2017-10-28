@@ -1,4 +1,5 @@
 ## *this project is still in early development ##
+![VSTS](https://adrianbrink.visualstudio.com/_apis/public/build/definitions/d997519b-4e10-4936-b403-69ea97908441/10/badge)
 # Calamari Blog
 A light-weight blogging client written in ASP.NET Core that reads from a headless CMS system called Squidex.
 
