@@ -5,15 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CB.CMS.Models\CB.CMS.Models.csproj" />
-    <ProjectReference Include="..\CB.Domain.Models\CB.Domain.Models.csproj" />
-    <ProjectReference Include="..\CB.SquidexClient\CB.SquidexClient.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Options">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.options\2.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\CB.CMS.Models\CB.CMS.Models.csproj" />
+    <ProjectReference Include="..\CB.Domain.Models\CB.Domain.Models.csproj" />
+    <ProjectReference Include="..\CB.SquidexClient\CB.SquidexClient.csproj" />
   </ItemGroup>
 
 </Project>
