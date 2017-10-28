@@ -20,9 +20,10 @@ namespace CB.CMS.SquidexClient
     {
         private readonly string clientId;
         private readonly string clientSecret;
+        private readonly string clientScope;
         private readonly Uri serviceUrl;
 
-        public Authenticator(Uri serviceUrl, string clientId, string clientSecret)
+        public Authenticator(Uri serviceUrl, string clientId, string clientSecret, string clientScope)
         {
             ArgumentGuard.NotNull(serviceUrl, nameof(serviceUrl));
             ArgumentGuard.NotNullOrEmpty(clientId, nameof(clientId));
@@ -31,6 +32,7 @@ namespace CB.CMS.SquidexClient
             this.serviceUrl = serviceUrl;
             this.clientId = clientId;
             this.clientSecret = clientSecret;
+            this.clientScope = clientScope;
         }
 
         public async Task<string> GetBearerTokenAsync()
@@ -60,9 +62,9 @@ namespace CB.CMS.SquidexClient
         {
             using (var httpClient = new HttpClient())
             {
-                var url = new Uri(serviceUrl, "identity-server/connect/token/");
+                var url = new Uri(serviceUrl, "identity-server/connect/token");
 
-                var bodyString = $"grant_type=client_credentials&client_id={this.clientId}&client_secret={this.clientSecret}&scope=squidex-api";
+                var bodyString = $"grant_type=client_credentials&client_id={clientId}&client_secret={clientSecret}&scope=squidex-api";
                 var bodyContent = new StringContent(bodyString, Encoding.UTF8, "application/x-www-form-urlencoded");
 
                 var response = await httpClient.PostAsync(url, bodyContent);

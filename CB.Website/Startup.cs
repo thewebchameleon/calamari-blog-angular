@@ -19,6 +19,7 @@ using System;
 using Serilog.Events;
 using Microsoft.Extensions.Options;
 using CB.Common.Logging;
+using Microsoft.ApplicationInsights.Extensibility;
 
 namespace CB_Website
 {
@@ -125,9 +126,21 @@ namespace CB_Website
                     controlLevelSwitch: loggingLevel
                 );
             }
+            if (config.ApplicationInsights.IsEnabled)
+            {
+                logger.WriteTo.ApplicationInsightsEvents(new TelemetryConfiguration()
+                {
+                    InstrumentationKey = config.ApplicationInsights.InstrumentationKey,
+                }, loggingLevel.MinimumLevel);
+            }
             if (config.RollingFile.IsEnabled)
             {
-                logger.WriteTo.RollingFile(config.RollingFile.Path);
+                //bump up the minimum logging level otherwise the log files will be huge
+                logger.WriteTo.RollingFile(config.RollingFile.Path, restrictedToMinimumLevel: LogEventLevel.Warning);
+            }
+            if (config.Console.IsEnabled)
+            {
+                loggerFactory.AddConsole();
             }
 
             loggerFactory.AddSerilog(logger.CreateLogger());

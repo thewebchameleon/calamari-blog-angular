@@ -6,6 +6,10 @@
 
         public RollingFileSettings RollingFile { get; set; }
 
+        public ApplicationInsightsSettings ApplicationInsights { get; set; }
+
+        public ConsoleSettings Console { get; set; }
+
         public string MinimumLogLevel { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace CB.CMS.SquidexClient
 
             this.serviceUrl = new Uri(clientConfig.ServiceURL);
             this.schemaName = schemaName;
-            this.authenticator = new Authenticator(new Uri(authConfig.ServiceURL), authConfig.ClientID, authConfig.ClientSecret);
+            this.authenticator = new Authenticator(new Uri(authConfig.ServiceURL), authConfig.ClientID, authConfig.ClientSecret, authConfig.ClientScope);
             this.applicationName = clientConfig.ApplicationName;
         }
 

@@ -7,5 +7,7 @@
         public string ClientID { get; set; }
 
         public string ClientSecret { get; set; }
+
+        public string ClientScope { get; set; }
     }
 }

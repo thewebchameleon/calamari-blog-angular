@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 
-declare var alertify: any;
+//declare var alertify: any;
 
 @Injectable()
 export class NotificationService {
@@ -13,9 +13,9 @@ export class NotificationService {
     //    this._notifier.success(message);
     //}
 
-    printErrorMessage(message: string) {
+    //printErrorMessage(message: string) {
         //this._notifier.error(message);
-    }
+    //}
 
     //printConfirmationDialog(message: string, okCallback: () => any) {
     //    this._notifier.confirm(message, function (e: any) {
