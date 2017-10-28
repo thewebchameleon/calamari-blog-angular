@@ -61,6 +61,9 @@ namespace CB_Website
             services.AddSingleton(Configuration);
             services.Configure<LoggingSettings>(options => Configuration.GetSection("Logging").Bind(options));
 
+            //application insights
+            services.AddApplicationInsightsTelemetry();
+
             //cache
             services.Configure<CacheSettings>(options => Configuration.GetSection("Cache").Bind(options));
             services.AddSingleton<ICacheProvider, MemoryCacheProvider>();

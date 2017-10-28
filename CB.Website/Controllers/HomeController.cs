@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebChameleon_Blog.Controllers
+namespace CB.Website.Controllers
 {
     public class HomeController : Controller
     {

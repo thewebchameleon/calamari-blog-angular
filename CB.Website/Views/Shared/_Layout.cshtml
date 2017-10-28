@@ -15,6 +15,9 @@
 
     <link rel="stylesheet" type="text/css" href="~/dist/vendor.css" asp-append-version="true" />
     <link rel="stylesheet" type="text/css" href="~/css/vendor-overrides.css" asp-append-version="true" />
+
+    @*TODO: conditional*@
+    @Html.Raw(ApplicationInsightsJS.FullScript)
 </head>
 <body>
     @RenderBody()

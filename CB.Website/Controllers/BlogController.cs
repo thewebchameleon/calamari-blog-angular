@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using CB.Domain.Models;
 using CB.Services.Blog;
 
-namespace WebChameleon_Blog.Controllers
+namespace CB.Website.Controllers
 {
     [Route("api/[controller]")]
     public class BlogController : Controller

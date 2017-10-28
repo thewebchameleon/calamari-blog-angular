@@ -1,5 +1,5 @@
 {
-  "name": "WebChameleon_Blog",
+  "name": "cb.website",
   "version": "0.0.0",
   "dependencies": {
     "@angular/animations": {
