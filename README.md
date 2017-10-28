@@ -17,4 +17,5 @@ The client will query the Squidex API for content when needed and cache it to a 
 Demo
 ----
 This demo runs off on Visual Studio Team Services with a JSON transform on the release definition.
+
 http://calamari-blog-demo.azurewebsites.net
