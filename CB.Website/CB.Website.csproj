@@ -37,7 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\app\models\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\gfx\" />
     <Folder Include="wwwroot\lib\" />

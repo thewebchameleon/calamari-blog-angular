@@ -15,6 +15,7 @@ namespace CB.Domain.Services.Profile.Mappers
             return new Models.Profile()
             {
                 Portrait = ResolveAssetURL(model.Data.Portrait.FirstOrDefault()),
+                Title = model.Data.Title,
                 Name = model.Data.Name,
                 Body = model.Data.Body
             };

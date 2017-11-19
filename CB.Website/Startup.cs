@@ -20,6 +20,9 @@ using Serilog.Events;
 using Microsoft.Extensions.Options;
 using CB.Common.Logging;
 using Microsoft.ApplicationInsights.Extensibility;
+using CB.Repositories.Global;
+using CB.Domain.Mappers.Global;
+using CB.Domain.Services.Global;
 
 namespace CB_Website
 {
@@ -73,14 +76,17 @@ namespace CB_Website
             services.AddTransient<ISquidexClientFactory, SquidexClientFactory>();
 
             //repositories
+            services.AddTransient<IGlobalRepository, GlobalRepository>();
             services.AddTransient<IBlogRepository, BlogRepository>();
             services.AddTransient<IProfileRepository, ProfileRepository>();
 
             //mappers
+            services.AddTransient<IGlobalMapper, GlobalMapper>();
             services.AddTransient<IBlogMapper, BlogMapper>();
             services.AddTransient<IProfileMapper, ProfileMapper>();
 
             //services
+            services.AddTransient<IGlobalService, GlobalService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IProfileService, ProfileService>();
         }

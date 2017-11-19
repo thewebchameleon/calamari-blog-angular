@@ -10,7 +10,7 @@ import { Profile } from '../../models/profile';
     styleUrls: ['./navmenu.component.css'],
 })
 export class NavMenuComponent {
-    private _currentYear: number;
+    private currentYear: number;
     private name: string;
     private title: string;
     private portrait: string;
@@ -18,7 +18,7 @@ export class NavMenuComponent {
     constructor(public dataService: DataService) { }
 
     ngOnInit() {
-        this._currentYear = new Date().getFullYear();
+        this.currentYear = new Date().getFullYear();
         this.getProfile();
     }
 

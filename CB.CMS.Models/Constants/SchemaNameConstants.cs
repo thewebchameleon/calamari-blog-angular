@@ -9,5 +9,7 @@
         public const string Blog_Categories = "blog-categories";
 
         public const string Profile = "profile";
+
+        public const string Global = "global";
     }
 }
