@@ -12,7 +12,7 @@ export class SearchComponent {
     constructor(public dataService: DataService) { }
 
     ngOnInit() {
-        alert(this.keyword);
+        
     }
 
     public searchBlogPosts(): void {
