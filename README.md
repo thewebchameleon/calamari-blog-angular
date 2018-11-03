@@ -18,4 +18,4 @@ Demo
 ----
 This demo runs off on Visual Studio Team Services with a JSON transform on the release definition.
 
-http://calamari-blog-demo.azurewebsites.net
+http://calamari-blog-angular.azurewebsites.net
