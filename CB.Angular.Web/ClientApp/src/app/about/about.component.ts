@@ -1,5 +1,4 @@
-import { Component, Inject } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 import { Profile } from '../../models/profile';
