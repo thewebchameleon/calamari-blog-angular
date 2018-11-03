@@ -4,7 +4,7 @@
 A light-weight blogging client written in Angular and ASP.NET Core that reads from a headless CMS system called Squidex.
 
 
-- Based off the the ASP.NET Core template for Angular included in Visual Studio 2017
+- Based off the the ASP.NET Core template for [Angular](https://angular.io/) included in Visual Studio 2017
 - Serilog is used for logging events to [any location](https://github.com/serilog/serilog/wiki/Provided-Sinks) 
 - Responses are gzipped
 - Uses the [Milligram](http://milligram.io/) CSS framework
