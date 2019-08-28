@@ -13,9 +13,3 @@ Caching
 -------
 
 The client will query the Squidex API for content when needed and cache it to an ICacheProvider. Cached items are cleared via a Webhook configured in Squidex.
-
-Demo
-----
-This demo runs off on Visual Studio Team Services with a JSON transform on the release definition.
-
-http://calamari-blog-angular.azurewebsites.net
